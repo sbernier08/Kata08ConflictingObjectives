@@ -1,0 +1,21 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6A447D62-83CA-4D57-AD51-7EEAB537A7EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata08ConflictingObjectives.Console", "src\Kata08ConflictingObjectives.Console\Kata08ConflictingObjectives.Console.csproj", "{DED2D51C-54A5-4A2E-BCD2-654F076AA298}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DED2D51C-54A5-4A2E-BCD2-654F076AA298} = {6A447D62-83CA-4D57-AD51-7EEAB537A7EE}
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DED2D51C-54A5-4A2E-BCD2-654F076AA298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DED2D51C-54A5-4A2E-BCD2-654F076AA298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DED2D51C-54A5-4A2E-BCD2-654F076AA298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DED2D51C-54A5-4A2E-BCD2-654F076AA298}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
