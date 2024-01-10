@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using System.Collections.Concurrent;
+using System.Text;
 using Kata08ConflictingObjectives.Console.Models;
 
 public class Program
@@ -6,21 +7,21 @@ public class Program
     public static async Task Main()
     {
         var startDate = DateTime.Now;
-        var words = GetAllWords();
-        var triplets = GetAllTriplets(words);
+        var words = await GetAllWords();
+        var triplets = await GetAllTriplets(words);
         var endDate = DateTime.Now;
 
         DisplayTriplets(triplets, startDate, endDate);
     }
 
-    private static Dictionary<string, int> GetAllWords()
+    private static async Task<Dictionary<string, int>> GetAllWords()
     {
         string filePath = @"D:\Dev\Tests\Kata08ConflictingObjectives\src\Kata08ConflictingObjectives.Console\Data\words.txt";
         var words = new Dictionary<string, int>();
         
         try
         {
-            string[] lines = File.ReadAllLines(filePath, Encoding.UTF8);
+            string[] lines = await File.ReadAllLinesAsync(filePath, Encoding.UTF8);
     
             foreach (string line in lines)
             {
@@ -36,32 +37,40 @@ public class Program
         return words;
     }
 
-    private static List<Triplet> GetAllTriplets(Dictionary<string, int> words, int wordLength = 6)
+    private static async Task<ConcurrentBag<Triplet>> GetAllTriplets(Dictionary<string, int> words, int wordLength = 6)
     {
-        var results = new List<Triplet>();
-        foreach (var word in words.Where(x => x.Key.Length == wordLength))
+        var results = new ConcurrentBag<Triplet>();
+        var sixLetterWords = words.Where(x => x.Key.Length == wordLength);
+
+        List<Task> tasks = new List<Task>();
+        foreach (var word in sixLetterWords)
         {
-            for (int i = 1; i < word.Key.Length; i++)
+            tasks.Add(Task.Run(() =>
             {
-                var part1 = word.Key.Substring(0, i);
-                var part2 = word.Key.Substring(i);
-        
-                if (words.ContainsKey(part1) && words.ContainsKey(part2))
+                for (int i = 1; i < word.Key.Length; i++)
                 {
-                    results.Add(new Triplet(word.Key, part1, part2));
+                    var part1 = word.Key.Substring(0, i);
+                    var part2 = word.Key.Substring(i);
+        
+                    if (words.ContainsKey(part1) && words.ContainsKey(part2))
+                    {
+                        results.Add(new Triplet(word.Key, part1, part2));
+                    }
                 }
-            }
+            }));
         }
+        
+        await Task.WhenAll(tasks);
 
         return results;
     }
 
-    private static void DisplayTriplets(List<Triplet> triplets, DateTime startDate, DateTime endDate)
+    private static void DisplayTriplets(ConcurrentBag<Triplet> triplets, DateTime startDate, DateTime endDate)
     {
         Console.WriteLine($"Start Time: {startDate.ToLongTimeString()}");
         Console.WriteLine();
         
-        foreach (var triplet in triplets)
+        foreach (var triplet in triplets.OrderBy(x => x.Word))
         {
             Console.WriteLine($"{triplet.Part1} + {triplet.Part2} => {triplet.Word}"); 
         }
