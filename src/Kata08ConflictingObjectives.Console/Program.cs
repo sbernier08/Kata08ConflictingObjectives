@@ -3,14 +3,14 @@ using Kata08ConflictingObjectives.Console.Models;
 
 public class Program
 {
-    static async Task Main()
+    public static async Task Main()
     {
         var startDate = DateTime.Now;
         var words = GetAllWords();
-        var results = GetResults(words);
+        var triplets = GetAllTriplets(words);
         var endDate = DateTime.Now;
 
-        DisplayResult(results, startDate, endDate);
+        DisplayTriplets(triplets, startDate, endDate);
     }
 
     private static Dictionary<string, int> GetAllWords()
@@ -36,9 +36,9 @@ public class Program
         return words;
     }
 
-    private static List<WordResult> GetResults(Dictionary<string, int> words, int wordLength = 6)
+    private static List<Triplet> GetAllTriplets(Dictionary<string, int> words, int wordLength = 6)
     {
-        var results = new List<WordResult>();
+        var results = new List<Triplet>();
         foreach (var word in words.Where(x => x.Key.Length == wordLength))
         {
             for (int i = 1; i < word.Key.Length; i++)
@@ -48,7 +48,7 @@ public class Program
         
                 if (words.ContainsKey(part1) && words.ContainsKey(part2))
                 {
-                    results.Add(new WordResult(word.Key, part1, part2));
+                    results.Add(new Triplet(word.Key, part1, part2));
                 }
             }
         }
@@ -56,18 +56,18 @@ public class Program
         return results;
     }
 
-    private static void DisplayResult(List<WordResult> results, DateTime startDate, DateTime endDate)
+    private static void DisplayTriplets(List<Triplet> triplets, DateTime startDate, DateTime endDate)
     {
         Console.WriteLine($"Start Time: {startDate.ToLongTimeString()}");
         Console.WriteLine();
         
-        foreach (var result in results)
+        foreach (var triplet in triplets)
         {
-            Console.WriteLine($"{result.Part1} + {result.Part2} => {result.Word}"); 
+            Console.WriteLine($"{triplet.Part1} + {triplet.Part2} => {triplet.Word}"); 
         }
         
         Console.WriteLine();
-        Console.WriteLine($"Triplet Count: {results.Count}");
+        Console.WriteLine($"Triplet Count: {triplets.Count}");
         Console.WriteLine($"End Time: {endDate.ToLongTimeString()}");
         Console.WriteLine($"Process Time: {(endDate - startDate).TotalSeconds} sec");
     }
