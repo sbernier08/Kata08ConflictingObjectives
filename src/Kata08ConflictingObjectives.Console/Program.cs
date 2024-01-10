@@ -1,9 +1,11 @@
 ﻿using System.Text;
 using Kata08ConflictingObjectives.Console.Models;
 
+namespace Kata08ConflictingObjectives.Console;
+
 public class Program
 {
-    public static async Task Main()
+    public static void Main()
     {
         var startDate = DateTime.Now;
         var words = GetAllWords();
@@ -30,7 +32,7 @@ public class Program
         }
         catch (IOException ex)
         {
-            Console.WriteLine($"Error reading the file: {ex.Message}");
+            System.Console.WriteLine($"Error reading the file: {ex.Message}");
         }
         
         return words;
@@ -58,18 +60,18 @@ public class Program
 
     private static void DisplayTriplets(List<Triplet> triplets, DateTime startDate, DateTime endDate)
     {
-        Console.WriteLine($"Start Time: {startDate.ToLongTimeString()}");
-        Console.WriteLine();
+        System.Console.WriteLine($"Start Time: {startDate.ToLongTimeString()}");
+        System.Console.WriteLine();
         
         foreach (var triplet in triplets)
         {
-            Console.WriteLine($"{triplet.Part1} + {triplet.Part2} => {triplet.Word}"); 
+            System.Console.WriteLine($"{triplet.Part1} + {triplet.Part2} => {triplet.Word}"); 
         }
         
-        Console.WriteLine();
-        Console.WriteLine($"Triplet Count: {triplets.Count}");
-        Console.WriteLine($"End Time: {endDate.ToLongTimeString()}");
-        Console.WriteLine($"Process Time: {(endDate - startDate).TotalSeconds} sec");
+        System.Console.WriteLine();
+        System.Console.WriteLine($"Triplet Count: {triplets.Count}");
+        System.Console.WriteLine($"End Time: {endDate.ToLongTimeString()}");
+        System.Console.WriteLine($"Process Time: {(endDate - startDate).TotalSeconds} sec");
     }
 }
 
