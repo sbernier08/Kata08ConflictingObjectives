@@ -5,10 +5,12 @@ public class Program
 {
     static async Task Main()
     {
+        var startDate = DateTime.Now;
         var words = GetAllWords();
         var results = GetResults(words);
+        var endDate = DateTime.Now;
 
-        DisplayResult(results);
+        DisplayResult(results, startDate, endDate);
     }
 
     private static Dictionary<string, int> GetAllWords()
@@ -54,12 +56,20 @@ public class Program
         return results;
     }
 
-    private static void DisplayResult(List<WordResult> results)
+    private static void DisplayResult(List<WordResult> results, DateTime startDate, DateTime endDate)
     {
+        Console.WriteLine($"Start Time: {startDate.ToLongTimeString()}");
+        Console.WriteLine();
+        
         foreach (var result in results)
         {
             Console.WriteLine($"{result.Part1} + {result.Part2} => {result.Word}"); 
         }
+        
+        Console.WriteLine();
+        Console.WriteLine($"Triplet Count: {results.Count}");
+        Console.WriteLine($"End Time: {endDate.ToLongTimeString()}");
+        Console.WriteLine($"Process Time: {(endDate - startDate).TotalSeconds} sec");
     }
 }
 
