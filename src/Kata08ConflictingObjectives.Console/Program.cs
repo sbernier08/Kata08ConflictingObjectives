@@ -39,7 +39,7 @@ public class Program
     private static List<WordResult> GetResults(Dictionary<string, int> words, int wordLength = 6)
     {
         var results = new List<WordResult>();
-        foreach (var word in words.Where(x => x.Key.Length == 6))
+        foreach (var word in words.Where(x => x.Key.Length == wordLength))
         {
             for (int i = 1; i < word.Key.Length; i++)
             {
