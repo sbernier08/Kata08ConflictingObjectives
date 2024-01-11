@@ -7,14 +7,14 @@ public class Program
     public static async Task Main()
     {
         var startDate = DateTime.Now;
-        var words = await GetAllWords();
-        var triplets = await GetAllTriplets(words);
+        var words = await GetAllWordsAsync();
+        var triplets = await GetAllTripletsAsync(words);
         var endDate = DateTime.Now;
 
         DisplayTriplets(triplets, startDate, endDate);
     }
 
-    private static async Task<Dictionary<string, int>> GetAllWords()
+    private static async Task<Dictionary<string, int>> GetAllWordsAsync()
     {
         string filePath = @"D:\Dev\Tests\Kata08ConflictingObjectives\src\Kata08ConflictingObjectives.Console\Data\words.txt";
         var words = new Dictionary<string, int>();
@@ -37,11 +37,11 @@ public class Program
         return words;
     }
 
-    private static async Task<ConcurrentBag<Triplet>> GetAllTriplets(Dictionary<string, int> words, int wordLength = 6)
+    private static async Task<ConcurrentBag<Triplet>> GetAllTripletsAsync(Dictionary<string, int> words, int wordLength = 6)
     {
         var results = new ConcurrentBag<Triplet>();
         var sixLetterWords = words.Where(x => x.Key.Length == wordLength);
-
+        
         List<Task> tasks = new List<Task>();
         foreach (var word in sixLetterWords)
         {
@@ -67,16 +67,14 @@ public class Program
 
     private static void DisplayTriplets(ConcurrentBag<Triplet> triplets, DateTime startDate, DateTime endDate)
     {
-        Console.WriteLine($"Start Time: {startDate.ToLongTimeString()}");
-        Console.WriteLine();
-        
         foreach (var triplet in triplets.OrderBy(x => x.Word))
         {
-            Console.WriteLine($"{triplet.Part1} + {triplet.Part2} => {triplet.Word}"); 
+            Console.WriteLine(triplet.ToString()); 
         }
         
         Console.WriteLine();
         Console.WriteLine($"Triplet Count: {triplets.Count}");
+        Console.WriteLine($"Start Time: {startDate.ToLongTimeString()}");
         Console.WriteLine($"End Time: {endDate.ToLongTimeString()}");
         Console.WriteLine($"Process Time: {(endDate - startDate).TotalSeconds} sec");
     }
