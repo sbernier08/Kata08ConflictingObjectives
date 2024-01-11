@@ -65,7 +65,7 @@ public class Program
         
         foreach (var triplet in triplets)
         {
-            System.Console.WriteLine($"{triplet.Part1} + {triplet.Part2} => {triplet.Word}"); 
+            System.Console.WriteLine(triplet.ToString()); 
         }
         
         System.Console.WriteLine();
