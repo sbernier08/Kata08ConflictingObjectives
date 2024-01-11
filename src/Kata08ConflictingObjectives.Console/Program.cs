@@ -60,9 +60,6 @@ public class Program
 
     private static void DisplayTriplets(List<Triplet> triplets, DateTime startDate, DateTime endDate)
     {
-        System.Console.WriteLine($"Start Time: {startDate.ToLongTimeString()}");
-        System.Console.WriteLine();
-        
         foreach (var triplet in triplets)
         {
             System.Console.WriteLine(triplet.ToString()); 
@@ -70,6 +67,7 @@ public class Program
         
         System.Console.WriteLine();
         System.Console.WriteLine($"Triplet Count: {triplets.Count}");
+        System.Console.WriteLine($"Start Time: {startDate.ToLongTimeString()}");
         System.Console.WriteLine($"End Time: {endDate.ToLongTimeString()}");
         System.Console.WriteLine($"Process Time: {(endDate - startDate).TotalSeconds} sec");
     }
