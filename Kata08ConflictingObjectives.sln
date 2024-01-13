@@ -2,7 +2,13 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6A447D62-83CA-4D57-AD51-7EEAB537A7EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata08ConflictingObjectives.Console", "src\Kata08ConflictingObjectives.Console\Kata08ConflictingObjectives.Console.csproj", "{DED2D51C-54A5-4A2E-BCD2-654F076AA298}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata08ConflictingObjectives.WebApi", "src\Kata08ConflictingObjectives.WebApi\Kata08ConflictingObjectives.WebApi.csproj", "{60D6BF24-6282-488B-BAA6-8743BDCB9C45}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata08ConflictingObjectives.Application", "src\Kata08ConflictingObjectives.Application\Kata08ConflictingObjectives.Application.csproj", "{2526BDEF-2EB5-412D-BF8F-17F64AC4C48F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata08ConflictingObjectives.Domain", "src\Kata08ConflictingObjectives.Domain\Kata08ConflictingObjectives.Domain.csproj", "{DF47B649-5D15-4FD5-97C4-F9DB980000A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kata08ConflictingObjectives.Infrastructure", "src\Kata08ConflictingObjectives.Infrastructure\Kata08ConflictingObjectives.Infrastructure.csproj", "{16FA7B10-7CB9-4CBF-B483-8C7B07848354}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -10,12 +16,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{DED2D51C-54A5-4A2E-BCD2-654F076AA298} = {6A447D62-83CA-4D57-AD51-7EEAB537A7EE}
+		{60D6BF24-6282-488B-BAA6-8743BDCB9C45} = {6A447D62-83CA-4D57-AD51-7EEAB537A7EE}
+		{2526BDEF-2EB5-412D-BF8F-17F64AC4C48F} = {6A447D62-83CA-4D57-AD51-7EEAB537A7EE}
+		{DF47B649-5D15-4FD5-97C4-F9DB980000A0} = {6A447D62-83CA-4D57-AD51-7EEAB537A7EE}
+		{16FA7B10-7CB9-4CBF-B483-8C7B07848354} = {6A447D62-83CA-4D57-AD51-7EEAB537A7EE}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DED2D51C-54A5-4A2E-BCD2-654F076AA298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DED2D51C-54A5-4A2E-BCD2-654F076AA298}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DED2D51C-54A5-4A2E-BCD2-654F076AA298}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DED2D51C-54A5-4A2E-BCD2-654F076AA298}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60D6BF24-6282-488B-BAA6-8743BDCB9C45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60D6BF24-6282-488B-BAA6-8743BDCB9C45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60D6BF24-6282-488B-BAA6-8743BDCB9C45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60D6BF24-6282-488B-BAA6-8743BDCB9C45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2526BDEF-2EB5-412D-BF8F-17F64AC4C48F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2526BDEF-2EB5-412D-BF8F-17F64AC4C48F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2526BDEF-2EB5-412D-BF8F-17F64AC4C48F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2526BDEF-2EB5-412D-BF8F-17F64AC4C48F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF47B649-5D15-4FD5-97C4-F9DB980000A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF47B649-5D15-4FD5-97C4-F9DB980000A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF47B649-5D15-4FD5-97C4-F9DB980000A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF47B649-5D15-4FD5-97C4-F9DB980000A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16FA7B10-7CB9-4CBF-B483-8C7B07848354}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16FA7B10-7CB9-4CBF-B483-8C7B07848354}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16FA7B10-7CB9-4CBF-B483-8C7B07848354}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16FA7B10-7CB9-4CBF-B483-8C7B07848354}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
